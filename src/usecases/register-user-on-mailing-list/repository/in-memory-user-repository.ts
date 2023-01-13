@@ -8,7 +8,7 @@ export class InMemoryUserRepository implements UserRepository {
   }
   async add(user: UserData): Promise<void> {
     const exists = await this.exists(user);
-    if (exists) {
+    if (!exists) {
       this.repository.push(user);
     }
   }
